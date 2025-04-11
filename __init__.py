@@ -7,7 +7,6 @@ from services.component_registry import ComponentRegistry
 def register_plugin():
     # Register UI components
     ComponentRegistry.register_component(AlertComponent)
-
     return router
 
 
