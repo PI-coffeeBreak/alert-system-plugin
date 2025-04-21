@@ -1,6 +1,6 @@
 from utils.api import Router, Depends
 from services.message_bus import MessageBus
-from models.message import RecipientType
+from schemas.notification import RecipientType
 from schemas.notification import NotificationRequest
 from dependencies.auth import check_role
 from dependencies.database import get_db
@@ -9,9 +9,27 @@ from typing import List
 from ..schemas.alert import AlertRequest
 from ..schemas.high_priority_alert import HighPriorityAlertResponse
 from ..services.high_priority_alert_service import HighPriorityAlertService
+from services.websocket_service import WebSocketService, WebSocketConnection
+from datetime import datetime, timezone
+import logging
+
+logger = logging.getLogger("coffeebreak.alert-system")
 
 router = Router()
+websocket_service = WebSocketService()
 
+
+@websocket_service.on_subscribe("high-priority-alerts")
+async def handle_alert_subscription(connection: WebSocketConnection):
+    """Handle subscription to high priority alerts topic"""
+    logger.info(f"New subscription to high priority alerts from {connection}")
+    HighPriorityAlertService(get_db()).subscribe(connection)
+
+@websocket_service.on_unsubscribe("high-priority-alerts")
+async def handle_alert_unsubscribe(connection: WebSocketConnection):
+    """Handle unsubscription from high priority alerts topic"""
+    logger.info(f"Unsubscribed from high priority alerts: {connection}")
+    HighPriorityAlertService(get_db()).unsubscribe(connection)
 
 @router.post("/")
 async def create_alert(
@@ -30,9 +48,8 @@ async def create_alert(
         priority=10 if alert.high_priority else 5
     )
 
-    # If it's a high priority alert, store it
     if alert.high_priority:
-        HighPriorityAlertService(db).store_high_priority_alert(alert.message)
+        await HighPriorityAlertService(db).store_high_priority_alert(alert.message)
 
     return await message_bus.send_notification(notification)
 
