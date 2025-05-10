@@ -22,13 +22,13 @@ websocket_service = WebSocketService()
 @websocket_service.on_subscribe("high-priority-alerts")
 async def handle_alert_subscription(connection: WebSocketConnection):
     """Handle subscription to high priority alerts topic"""
-    logger.info(f"New subscription to high priority alerts from {connection}")
+    logger.debug(f"New subscription to high priority alerts from {connection}")
     HighPriorityAlertService(get_db()).subscribe(connection)
 
 @websocket_service.on_unsubscribe("high-priority-alerts")
 async def handle_alert_unsubscribe(connection: WebSocketConnection):
     """Handle unsubscription from high priority alerts topic"""
-    logger.info(f"Unsubscribed from high priority alerts: {connection}")
+    logger.debug(f"Unsubscribed from high priority alerts: {connection}")
     HighPriorityAlertService(get_db()).unsubscribe(connection)
 
 @router.post("/")

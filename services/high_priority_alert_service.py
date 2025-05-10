@@ -75,17 +75,12 @@ class HighPriorityAlertService:
             
         one_hour_ago = datetime.now(timezone.utc) - timedelta(hours=1)
 
-        logger.info(f"Fetching alerts newer than: {one_hour_ago}")
+        logger.debug(f"Fetching alerts newer than: {one_hour_ago}")
 
         # First get all alerts to check their timestamps
         alerts = self.db.query(HighPriorityAlert).order_by(
             HighPriorityAlert.created_at.desc()
         ).all()
-
-        logger.info("All alerts in database:")
-        for alert in alerts:
-            logger.info(
-                f"Alert created at {alert.created_at}: {alert.message}")
 
         # Then filter by time
         alerts = self.db.query(HighPriorityAlert).filter(
