@@ -30,7 +30,7 @@ async def list_templates(
     skip: int = 0,
     limit: int = 100,
     db: Session = Depends(get_db),
-    _: dict = Depends(check_role(["manage_alerts", "send_alert"]))
+    _: dict = Depends(check_role(["manage_alerts"]))
 ):
     """List all alert templates"""
     service = AlertTemplateService(db)
@@ -41,7 +41,7 @@ async def list_templates(
 async def get_template(
     template_id: int,
     db: Session = Depends(get_db),
-    _: dict = Depends(check_role(["manage_alerts", "send_alert"]))
+    _: dict = Depends(check_role(["manage_alerts"]))
 ):
     """Get a specific alert template by ID"""
     service = AlertTemplateService(db)

@@ -35,7 +35,7 @@ async def handle_alert_unsubscribe(connection: WebSocketConnection):
 async def create_alert(
     alert: AlertRequest,
     db: Session = Depends(get_db),
-    user: dict = Depends(check_role(["manage_alerts"]))
+    user: dict = Depends(check_role(["manage_alerts", "send_alert"]))
 ):
     """Creates a new alert that will be broadcast to all users"""
     message_bus = MessageBus(db)
@@ -54,7 +54,7 @@ async def create_alert(
     return await message_bus.send_notification(notification)
 
 
-@router.get("/high-priority", response_model=List[HighPriorityAlertResponse])
+@router.get("/high-priority/", response_model=List[HighPriorityAlertResponse])
 async def get_high_priority_alerts(
     db: Session = Depends(get_db),
 ):
