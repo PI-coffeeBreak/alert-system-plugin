@@ -1,7 +1,7 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
-from utils.api import HTTPException
+from fastapi import HTTPException
 
 from ..models.alert_template import AlertTemplate
 from ..schemas.alert_template import AlertTemplateCreate, AlertTemplateUpdate

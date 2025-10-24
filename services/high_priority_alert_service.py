@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 import logging
 
-from services.websocket_service import WebSocketConnection
+from coffeebreak import WebSocketConnection
 from ..models.high_priority_alert import HighPriorityAlert
 from ..schemas.high_priority_alert import HighPriorityAlertResponse
 logger = logging.getLogger("coffeebreak.alert-system")

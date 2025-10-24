@@ -1,4 +1,4 @@
-from utils.api import Router
+from coffeebreak.utils.api import Router
 from .alert import router as alert_router
 from .alert_template import router as alert_template_router
 
