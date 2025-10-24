@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from sqlalchemy.sql import func
-from dependencies.database import Base
+from coffeebreak.db import ModelBase as Base
 
 
 class AlertTemplate(Base):

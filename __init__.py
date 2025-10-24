@@ -1,7 +1,7 @@
-from utils.api import Router
+from coffeebreak import Router
 from .routers import router
 from .schemas.alert_component import Alert
-from services.component_registry import ComponentRegistry
+from coffeebreak import ComponentRegistry
 
 NAME = "Alert System Plugin"
 DESCRIPTION = "A plugin for the Alert System"

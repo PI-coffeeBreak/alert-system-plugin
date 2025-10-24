@@ -1,7 +1,8 @@
 from typing import List
-from utils.api import Router, Depends, HTTPException
-from dependencies.auth import check_role
-from dependencies.database import get_db
+from coffeebreak import Router
+from fastapi import Depends, HTTPException
+from coffeebreak.auth import check_role
+from coffeebreak.db import DB as get_db
 from sqlalchemy.orm import Session
 
 from ..schemas.alert_template import (

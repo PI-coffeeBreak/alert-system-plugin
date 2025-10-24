@@ -1,15 +1,16 @@
-from utils.api import Router, Depends
-from services.message_bus import MessageBus
-from schemas.notification import RecipientType
-from schemas.notification import NotificationRequest
-from dependencies.auth import check_role
-from dependencies.database import get_db
+from coffeebreak import Router
+from fastapi import Depends
+from coffeebreak import MessageBus
+from coffeebreak.schemas import RecipientType
+from coffeebreak.schemas import NotificationRequest
+from coffeebreak.auth import check_role
+from coffeebreak.db import DB as get_db
 from sqlalchemy.orm import Session
 from typing import List
 from ..schemas.alert import AlertRequest
 from ..schemas.high_priority_alert import HighPriorityAlertResponse
 from ..services.high_priority_alert_service import HighPriorityAlertService
-from services.websocket_service import WebSocketService, WebSocketConnection
+from coffeebreak import WebSocketService, WebSocketConnection
 from datetime import datetime, timezone
 import logging
 
