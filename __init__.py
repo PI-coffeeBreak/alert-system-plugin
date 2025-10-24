@@ -1,4 +1,4 @@
-from coffeebreak.utils.api import Router
+from coffeebreak import Router
 from .routers import router
 from .schemas.alert_component import Alert
 from coffeebreak import ComponentRegistry

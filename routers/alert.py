@@ -1,10 +1,10 @@
-from coffeebreak.utils.api import Router
+from coffeebreak import Router
 from fastapi import Depends
 from coffeebreak import MessageBus
-from coffeebreak.schemas.notification import RecipientType
-from coffeebreak.schemas.notification import NotificationRequest
-from coffeebreak.dependencies.auth import check_role
-from coffeebreak.dependencies.database import get_db
+from coffeebreak.schemas import RecipientType
+from coffeebreak.schemas import NotificationRequest
+from coffeebreak.auth import check_role
+from coffeebreak.db import DB as get_db
 from sqlalchemy.orm import Session
 from typing import List
 from ..schemas.alert import AlertRequest
