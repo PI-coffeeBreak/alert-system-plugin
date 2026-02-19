@@ -1,0 +1,5 @@
+[tool.coffeebreak]
+identifier = "alert-system-plugin"
+name = "Alert System Plugin"
+description = "A plugin for the Alert System"
+config_page = true
