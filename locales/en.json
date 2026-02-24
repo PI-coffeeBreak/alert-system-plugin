@@ -1,0 +1,26 @@
+{
+  "title": "Send Alerts",
+  "templates": {
+    "title": "Alert Templates"
+  },
+  "createAlert": {
+    "title": "Send an alert",
+    "description": "Send a new alert to notify users about an upcoming event."
+  },
+  "createTemplate": {
+    "title": "Create a Template",
+    "description": "Create a template to send alerts more efficiently."
+  },
+  "success": {
+    "templateCreated": "Template created successfully",
+    "templateUpdated": "Template updated successfully",
+    "alertCreated": "Alert sent successfully"
+  },
+  "errors": {
+    "loadTemplates": "Failed to load templates",
+    "requiredFields": "Required fields are missing",
+    "createTemplate": "Failed to create template",
+    "updateTemplate": "Failed to update template",
+    "createAlert": "Failed to send alert"
+  }
+}
