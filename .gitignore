@@ -1,1 +1,3 @@
 __pycache__/
+# Build output
+.build/
