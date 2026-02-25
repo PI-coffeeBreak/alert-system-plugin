@@ -2,4 +2,14 @@
 identifier = "alert-system-plugin"
 name = "Alert System Plugin"
 description = "A plugin for the Alert System"
+components_dir = "components"
 config_page = true
+
+[tool.coffeebreak.admin_page]
+file = "admin/Page.jsx"
+route_slug = "alert-system-plugin"
+export_name = "default"
+
+[[tool.coffeebreak.components]]
+name = "Alert"
+file = "Alert.jsx"
